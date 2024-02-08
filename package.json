@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "An app that quizzes students and grades them instantly",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js node --trace-warnings .",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/amaben2020/quizzera-backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3"
   }
 }
