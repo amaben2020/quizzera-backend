@@ -1,0 +1,5 @@
+Organizing configuration files in a dedicated directory provides several benefits. It helps centralize and group various configurational settings and credentials, such as database, server, logging, caching, environments, localization, etc. This approach ensures stability and configurational consistency across the application.
+
+Having separately managed configurations also simplifies the identification and isolation of files containing sensitive information. When utilizing version control systems like Git, you can establish appropriate ignore rules to prevent the config folder or specific configuration files from being committed to the repository.
+
+This reduces the risk of accidentally exposing or granting unauthorized access to confidential data. As a result, it promotes collaboration, improved version control, and helps safeguard sensitive information:
