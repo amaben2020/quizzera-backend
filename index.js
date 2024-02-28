@@ -1,9 +1,6 @@
 import app from "./src/app.js";
 
-const PORT = 5000;
-
-// app.use
-
-app.use(PORT, () => {
+//sets up a server for the app to run on so that you can view it using localhost:[port]
+app.listen(5001, () => {
   console.log("running");
 });
