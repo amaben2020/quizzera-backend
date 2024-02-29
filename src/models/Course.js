@@ -11,17 +11,13 @@ const CourseSchema = Schema({
     min: 1,
     max: 5,
     default: 1,
+    required: [true, "Please enter a difficulty"],
   },
-
   taughtBy: {
     type: Schema.Types.ObjectId,
     ref: "Teacher",
   },
 
-  school: {
-    type: Schema.Types.ObjectId,
-    ref: "School",
-  },
   takenBy: [
     {
       type: Schema.Types.ObjectId,
