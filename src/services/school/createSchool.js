@@ -1,4 +1,4 @@
-import SchoolModel from "../../models/School";
+import SchoolModel from "../../models/School.js";
 
 export const createSchoolService = async ({
   name,

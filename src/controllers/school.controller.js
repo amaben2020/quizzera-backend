@@ -1,16 +1,17 @@
 import validator from "validator";
 
 import asyncHandler from "express-async-handler";
+import { createSchoolService } from "../services/school/createSchool.js";
 
 export const createSchool = asyncHandler(async (req, res) => {
   const { name, email, teachers, students, courses } = req.body;
 
   if (!validator.isEmail(email)) {
-    throw "Not a valid email";
+    res.send("Not a valid email");
   }
 
   if (name.length < 6) {
-    throw "Not a valid name";
+    res.send("Not a valid name");
   }
 
   const school = await createSchoolService({
@@ -22,6 +23,8 @@ export const createSchool = asyncHandler(async (req, res) => {
   });
 
   if (school) {
-    res.status(201).json({ ...school });
+    res.status(201).json({ message: "School created successfully", ...school });
+  } else {
+    res.status(500).json({ message: "Something went wrong" });
   }
 });
