@@ -22,8 +22,19 @@ export const createSchool = asyncHandler(async (req, res) => {
     courses,
   });
 
+  console.log(school);
+
   if (school) {
-    res.status(201).json({ message: "School created successfully", ...school });
+    res.status(201).json({
+      message: "School created successfully",
+      school: {
+        name: school.name,
+        email: school.email,
+        teachers: school.teachers,
+        students: school.students,
+        courses: school.courses,
+      },
+    });
   } else {
     res.status(500).json({ message: "Something went wrong" });
   }
