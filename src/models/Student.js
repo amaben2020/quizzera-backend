@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const TeacherSchema = Schema({
+const StudentSchema = Schema({
   name: {
     type: String,
     required: [true, "Please enter a name"],
@@ -11,12 +11,10 @@ const TeacherSchema = Schema({
     required: [true, "Please enter an email"],
   },
 
-  students: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Student",
-    },
-  ],
+  teacher: {
+    type: Schema.Types.ObjectId,
+    ref: "Student",
+  },
 
   school: {
     type: Schema.Types.ObjectId,
@@ -30,6 +28,6 @@ const TeacherSchema = Schema({
   ],
 });
 
-const TeacherModel = model("Teacher", TeacherSchema);
+const StudentModel = model("Student", StudentSchema);
 
-export default TeacherModel;
+export default StudentModel;

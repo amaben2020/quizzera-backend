@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const TeacherSchema = Schema({
   name: {
@@ -29,3 +29,7 @@ const TeacherSchema = Schema({
     },
   ],
 });
+
+const TeacherModel = model("Teacher", TeacherSchema);
+
+export default TeacherModel;
