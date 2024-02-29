@@ -7,4 +7,8 @@ router.route("/").get((req, res) => {
   res.send("OK");
 });
 
+router.route("/create").post((req, res) => {
+  res.send("OK");
+});
+
 export default router;
