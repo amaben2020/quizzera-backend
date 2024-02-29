@@ -1,35 +1,35 @@
 import { Schema, model } from "mongoose";
 
-const TeacherSchema = Schema({
+const CourseSchema = Schema({
   name: {
     type: String,
     required: [true, "Please enter a name"],
   },
 
-  email: {
-    type: String,
-    required: [true, "Please enter an email"],
+  difficulty: {
+    type: Number,
+    min: 1,
+    max: 5,
+    default: 1,
   },
 
-  students: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Student",
-    },
-  ],
+  taughtBy: {
+    type: Schema.Types.ObjectId,
+    ref: "Teacher",
+  },
 
   school: {
     type: Schema.Types.ObjectId,
     ref: "School",
   },
-  courses: [
+  takenBy: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Course",
+      ref: "Student",
     },
   ],
 });
 
-const TeacherModel = model("Teacher", TeacherSchema);
+const CourseModel = model("Course", CourseSchema);
 
-export default TeacherModel;
+export default CourseModel;
