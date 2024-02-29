@@ -17,7 +17,6 @@ const CourseSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "Teacher",
   },
-
   takenBy: [
     {
       type: Schema.Types.ObjectId,

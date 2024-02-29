@@ -11,10 +11,12 @@ const StudentSchema = Schema({
     required: [true, "Please enter an email"],
   },
 
-  teacher: {
-    type: Schema.Types.ObjectId,
-    ref: "Student",
-  },
+  teachers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Teacher",
+    },
+  ],
 
   school: {
     type: Schema.Types.ObjectId,
