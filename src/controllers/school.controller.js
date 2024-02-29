@@ -1,5 +1,4 @@
 import validator from "validator";
-import SchoolModel from "../models/School.js";
 
 import asyncHandler from "express-async-handler";
 
@@ -10,7 +9,11 @@ export const createSchool = asyncHandler(async (req, res) => {
     throw "Not a valid email";
   }
 
-  const school = await SchoolModel.create({
+  if (name.length < 6) {
+    throw "Not a valid name";
+  }
+
+  const school = await createSchoolService({
     name,
     email,
     teachers,
