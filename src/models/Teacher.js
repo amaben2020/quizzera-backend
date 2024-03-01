@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import validator from "validator";
+import { formatSchoolToText } from "../utils/index.js";
 import SchoolModel from "./School.js";
 
 const TeacherSchema = Schema({
@@ -36,14 +37,6 @@ const TeacherSchema = Schema({
     },
   ],
 });
-
-const formatSchoolToText = (string) => {
-  return string
-    .split(" ")
-    .slice(0, 3)
-    .map((elem) => elem.toUpperCase().split("")[0])
-    .join("");
-};
 
 TeacherSchema.pre("save", async function (next) {
   try {

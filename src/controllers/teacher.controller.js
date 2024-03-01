@@ -2,6 +2,7 @@ import validator from "validator";
 
 import asyncHandler from "express-async-handler";
 import { createTeacherService } from "../services/teacher/createTeacher.js";
+import { getTeacherEmail } from "../services/teacher/getTeacherEmail.js";
 
 export const createTeacher = asyncHandler(async (req, res) => {
   const { name, email, school, students, courses } = req.body;
@@ -12,6 +13,13 @@ export const createTeacher = asyncHandler(async (req, res) => {
 
   if (name.length < 6) {
     res.send("Not a valid name");
+  }
+
+  const userEmailAndName = await getTeacherEmail(email);
+
+  if (userEmailAndName) {
+    res.status(401).json({ message: "User already exists" });
+    throw "User already exists";
   }
 
   const teacher = await createTeacherService({
