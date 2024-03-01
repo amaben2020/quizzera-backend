@@ -15,9 +15,9 @@ export const createTeacher = asyncHandler(async (req, res) => {
     res.send("Not a valid name");
   }
 
-  const userEmailAndName = await getTeacherEmail(email);
+  const doesTeacherExist = await getTeacherEmail(email);
 
-  if (userEmailAndName) {
+  if (doesTeacherExist) {
     res.status(401).json({ message: "User already exists" });
     throw "User already exists";
   }
