@@ -32,6 +32,7 @@ export const createTeacher = asyncHandler(async (req, res) => {
         school: teacher.school,
         students: teacher.students,
         courses: teacher.courses,
+        loginId: teacher.loginId,
       },
     });
   } else {

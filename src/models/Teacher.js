@@ -1,20 +1,24 @@
 import { Schema, model } from "mongoose";
+import validator from "validator";
 import SchoolModel from "./School.js";
 
 const TeacherSchema = Schema({
   name: {
     type: String,
     required: [true, "Please enter a name"],
-    unique: true,
+    unique: [true, "Name already exists"],
+    index: true,
   },
   email: {
     type: String,
     required: [true, "Please enter an email"],
-    unique: true,
+    unique: [true, "Email already exists"],
+    validate: [validator.isEmail, "Please provide an email"],
   },
-  teacherId: {
+  loginId: {
     type: String,
     unique: true,
+    index: true,
   },
   students: [
     {
@@ -51,7 +55,7 @@ TeacherSchema.pre("save", async function (next) {
 
     if (this.isNew && school) {
       const firstLetters = formatSchoolToText(school.name);
-      this.teacherId =
+      this.loginId =
         firstLetters + "/" + Math.random().toString(36).substr(2, 9);
     }
     next();
