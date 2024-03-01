@@ -1,4 +1,5 @@
 import express from "express";
+import { createTeacher } from "../controllers/teacher.controller.js";
 
 const router = express.Router();
 
@@ -11,6 +12,6 @@ router.route("/").get((req, res, next) => {
   }
 });
 
-router.route("/create").post(() => {});
+router.route("/create").post(createTeacher);
 
 export default router;
