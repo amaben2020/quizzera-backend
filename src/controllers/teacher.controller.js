@@ -50,18 +50,10 @@ export const createTeacher = asyncHandler(async (req, res) => {
 
 export const getTeachers = asyncHandler(async (req, res) => {
   const teachers = await getTeachersService();
-
+  console.log("teachers", teachers);
   if (teachers) {
     res.status(201).json({
-      teachers: {
-        id: teachers._id,
-        name: teachers.name,
-        email: teachers.email,
-        school: teachers.school,
-        students: teachers.students,
-        courses: teachers.courses,
-        loginId: teachers.loginId,
-      },
+      teachers,
     });
   } else {
     res.status(500).json({ message: "Unable to create teacher" });
