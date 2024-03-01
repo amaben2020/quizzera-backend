@@ -3,7 +3,7 @@ import validator from "validator";
 import asyncHandler from "express-async-handler";
 import { createTeacherService } from "../services/teacher/createTeacher.js";
 import { getTeacherEmail } from "../services/teacher/getTeacherEmail.js";
-
+import { getTeachersService } from "../services/teacher/getTeachers.js";
 export const createTeacher = asyncHandler(async (req, res) => {
   const { name, email, school, students, courses } = req.body;
 
@@ -49,25 +49,18 @@ export const createTeacher = asyncHandler(async (req, res) => {
 });
 
 export const getTeachers = asyncHandler(async (req, res) => {
-  const teacher = await getTeachersService({
-    name,
-    email,
-    school,
-    students,
-    courses,
-  });
+  const teachers = await getTeachersService();
 
-  if (teacher) {
+  if (teachers) {
     res.status(201).json({
-      message: "Teacher created successfully",
-      teacher: {
-        id: teacher._id,
-        name: teacher.name,
-        email: teacher.email,
-        school: teacher.school,
-        students: teacher.students,
-        courses: teacher.courses,
-        loginId: teacher.loginId,
+      teachers: {
+        id: teachers._id,
+        name: teachers.name,
+        email: teachers.email,
+        school: teachers.school,
+        students: teachers.students,
+        courses: teachers.courses,
+        loginId: teachers.loginId,
       },
     });
   } else {

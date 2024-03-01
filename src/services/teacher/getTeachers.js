@@ -1,6 +1,6 @@
 import TeacherModel from "../../models/Teacher.js";
 
-export const getTeacherEmail = async () => {
+export const getTeachersService = async () => {
   try {
     const teacher = await TeacherModel.find().populate("school", "name email");
     return teacher;
