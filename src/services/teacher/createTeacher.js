@@ -7,13 +7,17 @@ export const createTeacherService = async ({
   students,
   courses,
 }) => {
-  const teacher = await TeacherModel.create({
-    name,
-    email,
-    school,
-    students,
-    courses,
-  });
+  try {
+    const teacher = new TeacherModel({
+      name,
+      email,
+      school,
+      students,
+      courses,
+    });
 
-  return teacher;
+    return await teacher.save();
+  } catch (error) {
+    console.log("Error", error);
+  }
 };

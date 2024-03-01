@@ -36,6 +36,6 @@ export const createTeacher = asyncHandler(async (req, res) => {
       },
     });
   } else {
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: "Unable to create teacher" });
   }
 });

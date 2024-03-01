@@ -9,10 +9,7 @@ const app = express();
 app.use(express.json());
 
 mongoose.set("strictQuery", true);
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
+const options = {};
 dotenv.config();
 
 app.use(

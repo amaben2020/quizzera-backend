@@ -7,7 +7,6 @@ const TeacherSchema = Schema({
     type: String,
     required: [true, "Please enter a name"],
     unique: [true, "Name already exists"],
-    index: true,
   },
   email: {
     type: String,
@@ -18,7 +17,6 @@ const TeacherSchema = Schema({
   loginId: {
     type: String,
     unique: true,
-    index: true,
   },
   students: [
     {
