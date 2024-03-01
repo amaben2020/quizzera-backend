@@ -11,4 +11,6 @@ router.route("/").get((req, res, next) => {
   }
 });
 
+router.route("/create").post(() => {});
+
 export default router;
