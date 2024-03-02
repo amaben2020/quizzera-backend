@@ -50,7 +50,6 @@ export const createTeacher = asyncHandler(async (req, res) => {
 
 export const getTeachers = asyncHandler(async (req, res) => {
   const teachers = await getTeachersService();
-  console.log("teachers", teachers);
   if (teachers) {
     res.status(201).json({
       teachers,

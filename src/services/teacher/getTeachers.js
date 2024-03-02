@@ -6,6 +6,7 @@ export const getTeachersService = async () => {
       "school",
       "name email",
     );
+    console.log("teacher", teacher);
     return teacher;
   } catch (error) {
     console.log(error);

@@ -2,6 +2,7 @@ import validator from "validator";
 
 import asyncHandler from "express-async-handler";
 import { createStudentService } from "../services/student/createStudent.js";
+import { getAllStudentsService } from "../services/student/getAllStudents.js";
 import { getStudentByEmail } from "../services/student/getStudentByEmail.js";
 
 export const createStudent = asyncHandler(async (req, res) => {
@@ -30,8 +31,6 @@ export const createStudent = asyncHandler(async (req, res) => {
     courses,
   });
 
-  console.log(student);
-
   if (student) {
     res.status(201).json({
       message: "Student created successfully",
@@ -49,7 +48,7 @@ export const createStudent = asyncHandler(async (req, res) => {
 });
 
 export const getStudents = asyncHandler(async (req, res) => {
-  const students = await getStudentsService();
+  const students = await getAllStudentsService();
 
   if (students) {
     res.status(201).json({

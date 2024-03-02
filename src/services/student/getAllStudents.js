@@ -1,12 +1,12 @@
-import TeacherModel from "../../models/Teacher.js";
+import StudentModel from "../../models/Student.js";
 
-export const getTeachersService = async () => {
+export const getAllStudentsService = async () => {
   try {
-    const teacher = await TeacherModel.find({}).populate(
-      "school",
+    const student = await StudentModel.find({}).populate(
+      "teachers",
       "name email",
     );
-    return teacher;
+    return student;
   } catch (error) {
     console.log(error);
   }
