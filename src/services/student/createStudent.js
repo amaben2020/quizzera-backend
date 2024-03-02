@@ -4,7 +4,7 @@ export const createStudentService = async ({
   name,
   email,
   school,
-  students,
+  teachers,
   courses,
 }) => {
   try {
@@ -12,7 +12,7 @@ export const createStudentService = async ({
       name,
       email,
       school,
-      students,
+      teachers,
       courses,
     });
 

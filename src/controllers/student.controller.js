@@ -5,7 +5,7 @@ import { createStudentService } from "../services/student/createStudent.js";
 import { getStudentByEmail } from "../services/student/getStudentByEmail.js";
 
 export const createStudent = asyncHandler(async (req, res) => {
-  const { name, email, school, students, courses } = req.body;
+  const { name, email, school, teachers, courses } = req.body;
 
   if (!validator.isEmail(email)) {
     res.send("Not a valid email");
@@ -26,21 +26,21 @@ export const createStudent = asyncHandler(async (req, res) => {
     name,
     email,
     school,
-    students,
+    teachers,
     courses,
   });
 
+  console.log(student);
+
   if (student) {
     res.status(201).json({
-      message: "student created successfully",
+      message: "Student created successfully",
       student: {
-        id: student._id,
         name: student.name,
         email: student.email,
         school: student.school,
-        students: student.students,
+        teachers: student.teachers,
         courses: student.courses,
-        loginId: student.loginId,
       },
     });
   } else {
