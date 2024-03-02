@@ -1,6 +1,7 @@
 import validator from "validator";
 
 import asyncHandler from "express-async-handler";
+import { teacherLogin } from "../services/auth/teacherLogin.js";
 import { createTeacherService } from "../services/teacher/createTeacher.js";
 import { getTeacherEmail } from "../services/teacher/getTeacherEmail.js";
 import { getTeachersService } from "../services/teacher/getTeachers.js";
@@ -56,5 +57,17 @@ export const getTeachers = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(500).json({ message: "Unable to create teacher" });
+  }
+});
+
+export const getTeacher = asyncHandler(async (req, res) => {
+  const teacher = await teacherLogin(req.body.loginId);
+
+  if (teachers) {
+    res.status(200).json({
+      teacher,
+    });
+  } else {
+    res.status(500).json({ message: "Unable to login teacher" });
   }
 });

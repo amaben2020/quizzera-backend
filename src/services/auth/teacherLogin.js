@@ -1,4 +1,4 @@
-import TeacherModel from "../../models/Teacher";
+import TeacherModel from "../../models/Teacher.js";
 
 export const teacherLogin = async (loginId) => {
   try {
